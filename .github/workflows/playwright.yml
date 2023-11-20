@@ -2,8 +2,6 @@ name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
 jobs:
   test:
     timeout-minutes: 60
@@ -17,8 +15,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Install Nx
+      run: npm install -g nx  
+    - name: set Nx  
+      uses: nrwl/nx-set-shas@v3 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: nx run campaign-server-ui-tests:tests
     - uses: actions/upload-artifact@v3
       if: always()
       with:
