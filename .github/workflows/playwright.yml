@@ -16,9 +16,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Install Nx
-      run: npm install -g nx  
-    - name: set Nx  
-      uses: nrwl/nx-set-shas@v3 
+      run: npm install -g nx
     - name: Run Playwright tests
       run: nx run campaign-server-ui-tests:tests
     - uses: actions/upload-artifact@v3
