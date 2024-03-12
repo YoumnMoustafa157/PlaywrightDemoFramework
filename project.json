@@ -1,0 +1,21 @@
+{
+  "name": "campaign-manager-ui-tests",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "tests": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/campaign-manager-ui-tests"],
+      "options": {
+        "config": "apps/campaign-manager-ui-tests/playwright.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["ui-tests/**/*.{js,ts}"]
+      }
+    }
+  }
+}
